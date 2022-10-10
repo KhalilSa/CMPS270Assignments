@@ -3,11 +3,9 @@
 #define main_functions
 #define MAX_LINE 30
 
-void trim_trailing(char *str);
-int is_string_numeric(char *str);
-int hamming_distance(int a, int b);
+int msb(unsigned int num);
+int lsb(unsigned int num);
 unsigned long binary(unsigned int num);
-int sum_bits(unsigned long bin);
-unsigned long power(unsigned long base, unsigned int exp);
+int msb_lsb_diff(int msb, int lsb);
 
 #endif

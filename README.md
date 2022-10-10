@@ -5,16 +5,14 @@ This is a simple C application where it calculates the hamming distance between 
 ## Building Dependecies
 
 - Any c/c++ compiler
-- cmake VERSION 3.12 or higher
+- Recommended `GNU Make` VERSION 4.3
 
 ## build
 
-``mkdir build ``
-
-``cd build ``
-
-``cmake ``
+``make``
 
 ## run
-navigate to your build folder, then run:
-``./hamming_distance````
+To run the program, use:
+``./msb_lsb``
+To run the tests, use:
+``./test_driver``

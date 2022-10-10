@@ -2,6 +2,7 @@
 #include <string.h>
 #include <ctype.h>
 #include <limits.h>
+#include <math.h>
 
 #include "main_functions.h"
 
@@ -18,42 +19,19 @@ void trim_trailing(char *str) {
 }
 
 /*
-    Check if a string has only numeric, whitespace characters, and (-) character 
+    Check if a string has only numeric character
+    @returns 1 if the string is numeric
+             0 otherwise
 */
 int is_string_numeric(char *str) {
     int i = 0;
-    // ignore first (-) character
-    if (str[i] == '-') i++; 
-    // check if the rest of the string has only 
+    // check if the rest of the string includes only digits
     while (str[i] != '\0') {
-        if (!isdigit(str[i]) && str[i] != ' ') return 0;
+        if (!isdigit(str[i])) return 0;
         i++;
     }
 
     return 1;
-}
-
-/*
-    calulate the hamming distance between two positive integers
-    preconditions:
-        a : positive int
-        b : positive int
-        INT_MIN < a <= b < INT_MAX
-
-    @returs the hamming distance between the two positive integers 
-            if the preconditions are met, -1 otherwise
-*/
-int hamming_distance(int a, int b) {
-    if (a < 0 || b < 0) return -1;
-    if (a == b) return 0;
-    if (a >= INT_MAX || b >= INT_MAX) return -1;
-    // calculate a xor b
-    unsigned int _xor = a ^ b;
-    // convert a xor b to binary
-    unsigned long bin_xor = binary(_xor);
-    // count how many ones in bin_xor (same thing as summing all bits)
-    int result = sum_bits(bin_xor);
-    return result;
 }
 
 /*
@@ -65,7 +43,7 @@ unsigned long binary(unsigned int num) {
     int exp = 0;
     while (num != 0) {
         int rem = num % 2;
-        bin += rem * power(10, exp);
+        bin += rem * (unsigned long) pow(10, exp);
 
         num /= 2;
         exp++;
@@ -73,30 +51,32 @@ unsigned long binary(unsigned int num) {
     return bin;
 }
 
-unsigned long power(unsigned long base, unsigned int exp)
-{
-    unsigned long result = 1;
-    while (exp > 0) {
-        if ((exp & 1) == 1)
-        {
-            result = result * base;
-        }
-        base = base * base;
-        exp = exp >> 1;
-    }
-    return result;
+int msb(unsigned int num) {
+    if (num == 0) return -1;
+    unsigned long bin = binary(num);
+    return floor(log10(bin));
 }
- 
+
+int lsb(unsigned int num) {
+    if (num == 0) return -1;
+    unsigned long bin = binary(num);
+    int index = 0;
+    while (bin != 0) {
+        if (bin % 2 == 1)
+            return index;
+        bin /= 2;
+        index++;
+    }
+    return -1;
+}
 
 /*
-    precondition: bin is a binary representation of a positive integer
-    @returns the sum of all bits of the binary number (i.e counts the number of 1 bits)
+    takes two positive integers and calculates the difference
+    precondition: msb >= lsb
+
+    @returns the difference between msb and lsb
 */
-int sum_bits(unsigned long bin) {
-    int count = 0;
-    while (bin > 0) {
-        count += bin % 2;
-        bin /= 10;
-    }
-    return count;
+int msb_lsb_diff(int msb, int lsb) {
+    if (msb < 0 || lsb < 0) return -1;
+    return msb - lsb;
 }

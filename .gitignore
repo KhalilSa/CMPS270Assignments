@@ -1,0 +1,88 @@
+
+*.a
+*.app
+# build folder
+build/*.git/info/exclude
+.cashe/
+*.cmd
+*.d
+# Debug files
+dkms.conf
+*.dll
+*.dSYM/
+*.dylib
+*.elf
+*.exe
+# Executables
+*.exp
+*.gch
+.git/config
+.git/description
+.git/hooks/applypatch-msg.sample
+.git/hooks/commit-msg.sample
+.git/hooks/fsmonitor-watchman.sample
+.git/hooks/post-update.sample
+.git/hooks/pre-applypatch.sample
+.git/hooks/pre-commit.sample
+.git/hooks/pre-merge-commit.sample
+.git/hooks/prepare-commit-msg.sample
+.git/hooks/pre-push.sample
+.git/hooks/pre-rebase.sample
+.git/hooks/pre-receive.sample
+.git/hooks/push-to-checkout.sample
+.git/hooks/update.sample
+.git/info/exclude
+.git/objects/46/cf7f48c468aec3285f31e1d426315b82928ab5
+*.hex
+*.i*86
+*.idb
+*.ilk
+# Kernel Module Compile Results
+*.ko
+*.la
+*.lib
+# Libraries
+# Linker output
+*.lo
+*.map
+Mkfile.old
+*.mod*
+modules.order
+Module.symvers
+msb_lsb
+*.o
+*.obj
+# Object files
+*.out
+*.pch
+*.pdb
+# Precompiled Headers
+# Prerequisites
+# Shared objects (inc. Windows DLLs)
+*.so
+*.so.*
+*.su
+test_driver
+.tmp_versions/
+.vscode/
+#vscode settings packages
+*.x86_64
+./test_driver
+./msb_lsb
+./.git/info/exclude
+./.git/hooks/update.sample
+./.git/hooks/pre-receive.sample
+./.git/hooks/post-update.sample
+./.git/hooks/fsmonitor-watchman.sample
+./.git/hooks/prepare-commit-msg.sample
+./.git/hooks/push-to-checkout.sample
+./.git/hooks/pre-commit.sample
+./.git/hooks/pre-applypatch.sample
+./.git/hooks/applypatch-msg.sample
+./.git/hooks/pre-push.sample
+./.git/hooks/commit-msg.sample
+./.git/hooks/pre-merge-commit.sample
+./.git/hooks/pre-rebase.sample
+./.git/objects/46/cf7f48c468aec3285f31e1d426315b82928ab5
+./.git/config
+./.git/description
