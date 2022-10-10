@@ -1,88 +1,58 @@
-
-*.a
-*.app
-# build folder
-build/*.git/info/exclude
-.cashe/
-*.cmd
-*.d
-# Debug files
-dkms.conf
-*.dll
-*.dSYM/
-*.dylib
-*.elf
-*.exe
-# Executables
-*.exp
-*.gch
-.git/config
-.git/description
-.git/hooks/applypatch-msg.sample
-.git/hooks/commit-msg.sample
-.git/hooks/fsmonitor-watchman.sample
-.git/hooks/post-update.sample
-.git/hooks/pre-applypatch.sample
-.git/hooks/pre-commit.sample
-.git/hooks/pre-merge-commit.sample
-.git/hooks/prepare-commit-msg.sample
-.git/hooks/pre-push.sample
-.git/hooks/pre-rebase.sample
-.git/hooks/pre-receive.sample
-.git/hooks/push-to-checkout.sample
-.git/hooks/update.sample
-.git/info/exclude
-.git/objects/46/cf7f48c468aec3285f31e1d426315b82928ab5
-*.hex
-*.i*86
-*.idb
-*.ilk
-# Kernel Module Compile Results
-*.ko
-*.la
-*.lib
-# Libraries
-# Linker output
-*.lo
-*.map
-Mkfile.old
-*.mod*
-modules.order
-Module.symvers
-msb_lsb
-*.o
-*.obj
-# Object files
-*.out
-*.pch
-*.pdb
-# Precompiled Headers
 # Prerequisites
+*.d
+
+# Object files
+*.o
+*.ko
+*.obj
+*.elf
+
+# Linker output
+*.ilk
+*.map
+*.exp
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Libraries
+*.lib
+*.a
+*.la
+*.lo
+
 # Shared objects (inc. Windows DLLs)
+*.dll
 *.so
 *.so.*
-*.su
-test_driver
-.tmp_versions/
-.vscode/
-#vscode settings packages
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
 *.x86_64
-./test_driver
-./msb_lsb
-./.git/info/exclude
-./.git/hooks/update.sample
-./.git/hooks/pre-receive.sample
-./.git/hooks/post-update.sample
-./.git/hooks/fsmonitor-watchman.sample
-./.git/hooks/prepare-commit-msg.sample
-./.git/hooks/push-to-checkout.sample
-./.git/hooks/pre-commit.sample
-./.git/hooks/pre-applypatch.sample
-./.git/hooks/applypatch-msg.sample
-./.git/hooks/pre-push.sample
-./.git/hooks/commit-msg.sample
-./.git/hooks/pre-merge-commit.sample
-./.git/hooks/pre-rebase.sample
-./.git/objects/46/cf7f48c468aec3285f31e1d426315b82928ab5
-./.git/config
-./.git/description
+*.hex
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Kernel Module Compile Results
+*.mod*
+*.cmd
+.tmp_versions/
+modules.order
+Module.symvers
+Mkfile.old
+dkms.conf
+
+# vscode settings
+./cashe
+./vscode
+msb_lsb
+test_driver
