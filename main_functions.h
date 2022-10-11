@@ -8,5 +8,6 @@ void arrayHistogram(int *arr, const unsigned int N);
 void swapValues(int *arr, const unsigned int N, int i, int j);
 void bubbleSort(int* arr, const unsigned int N);
 float median(int *arr, const unsigned int N);
+int isSorted(int *arr, const unsigned int N);
 
 #endif

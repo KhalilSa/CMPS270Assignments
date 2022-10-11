@@ -120,7 +120,7 @@ void bubbleSort(int* arr, const unsigned int N) {
     preconditions:
         arr: an initialized integer array
         N: a positive integer representing the real size of the array
-    @returns the median of the list :double
+    @returns the median of the array :double
 */
 float median(int *arr, const unsigned int N) {
     if (arr == NULL || N <= 0) return 0;
@@ -143,3 +143,52 @@ float median(int *arr, const unsigned int N) {
     return copy[(int) (N/2)];
 }
 
+/*
+    takes an array of integers and calculates the mode (the most frequent element)
+    preconditions:
+        arr: an initialized integer array
+        N: a positive integer representing the real size of the array
+    @returns the mode of the array :int
+*/
+int mode(int *arr, const unsigned int N) {
+    if (arr == NULL || N <= 0) return 0;
+
+    unsigned int mode_index = 0, count_max = 0;
+
+    // loop thru the array
+    for (unsigned int i = 0; i < N; i++) {
+        unsigned int count = 1;
+        // count number of occurances of 
+        for (unsigned int j = i + 1; j < N; j++) {
+            if (arr[i] == arr[j]) {
+                count++;
+            }
+        }
+        if (count > count_max) {
+            count_max = count;
+            mode_index = i;
+        }
+    }
+
+    return arr[mode_index];
+}
+
+
+/*
+    takes an array of integers and checks if the array is sorted in ascending order or not
+    arr: an initialized integer array
+        N: a positive integer representing the real size of the array
+    @returns 1 if the array is sorted increasingly, 0 otherwise :int
+*/
+int isSorted(int *arr, const unsigned int N) {
+    if (arr == NULL || N <= 0) return 1;
+
+    // iterate thru the array 
+    for (unsigned int i = 0; i < N - 1; i++) {
+        // return 0 if the next element is out of order
+        if (arr[i] > arr[i+1]) {
+            return 0;
+        }
+    }
+    return 1;
+}
