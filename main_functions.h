@@ -1,11 +1,12 @@
 #ifndef main_functions
 
 #define main_functions
-#define MAX_LINE 30
+#define SIZE 10
 
-int msb(unsigned int num);
-int lsb(unsigned int num);
-unsigned long binary(unsigned int num);
-int msb_lsb_diff(int msb, int lsb);
+void printArray(int *arr, const unsigned int N);
+void arrayHistogram(int *arr, const unsigned int N);
+void swapValues(int *arr, const unsigned int N, int i, int j);
+void bubbleSort(int* arr, const unsigned int N);
+float median(int *arr, const unsigned int N);
 
 #endif
