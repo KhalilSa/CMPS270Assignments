@@ -1,7 +1,6 @@
 #include <limits.h>
 #include <stdio.h>
 #include <assert.h>
-#include <string.h>
 #include "main_functions.c"
 #include "main_functions.h"
 
