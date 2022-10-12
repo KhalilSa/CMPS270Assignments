@@ -1,6 +1,6 @@
 # MSB_LSB
 
-This is a simple C application where it calculates the difference between Most significant bit and least significant bit (set to 1) of an integer.
+This is a simple C application where it merges two sorted string arrays while maintaining the relative alpha-numeric order.
 
 ## Building Dependecies
 
@@ -11,7 +11,7 @@ This is a simple C application where it calculates the difference between Most s
 
 ``clone https://github.com/KhalilSa/CMPS270Assignments.git``
 
-``git checkout msb_lsb_hw1ex2``
+``git checkout my_pointers_hw1ex4``
 
 ``make``
 
@@ -19,8 +19,5 @@ This is a simple C application where it calculates the difference between Most s
 
 To run the program, use:
 
-``./msb_lsb`` </br>
+``./my_pointers`` </br>
 
-To run the tests, use:
-
-``./test_driver``
