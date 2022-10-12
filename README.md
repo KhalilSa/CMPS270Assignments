@@ -1,4 +1,4 @@
-# MSB_LSB
+# MY_POINTERS (MERGE SORTED ARRAYS)
 
 This is a simple C application where it merges two sorted string arrays while maintaining the relative alpha-numeric order.
 
