@@ -1,6 +1,7 @@
-# MY_ARRAYS
+# MORE_ARRAYS
 
-This is a simple C utility file where it defines bunch of useful functions for dealing with integer arrays including printing, sorting, swapping elements, finding mode and median, and more.
+This is a simple C utility file where it takes 2D arrays of strings and returns new 1D array 
+containing the concatenation of the array of strings.
 
 ## Building Dependecies
 
@@ -11,7 +12,7 @@ This is a simple C utility file where it defines bunch of useful functions for d
 
 ``clone https://github.com/KhalilSa/CMPS270Assignments.git``
 
-``git checkout my_arrays_hw1ex3``
+``git checkout more_arrays_hw1ex5``
 
 ``make``
 
@@ -19,4 +20,4 @@ This is a simple C utility file where it defines bunch of useful functions for d
 
 To run the program, use:
 
-``./my_arrays``
+``./more_arrays``
