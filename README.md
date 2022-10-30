@@ -1,6 +1,6 @@
 # Binary Tree
 
-This is a basic C++ stack  implementation.
+This is a basic C++ Binary Tree  implementation.
 
 ## Building Dependecies
 
