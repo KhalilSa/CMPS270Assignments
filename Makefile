@@ -1,0 +1,17 @@
+all: clean makedir my_stack
+CC=g++
+LIBS=-lm
+
+CFLAGS = -O2 -MD
+
+# distination folder
+DIST=bin
+
+my_stack: my_stack.cpp my_stack.hpp
+	$(CC) $(CFLAGS) -o bin/my_stack my_stack.cpp $(LIBS)
+
+makedir:
+	@mkdir $(DIST)
+
+clean:
+	@rm -fr $(DIST)
