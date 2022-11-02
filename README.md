@@ -1,6 +1,6 @@
 # Binary Tree
 
-This is a basic C++ stack  implementation.
+This is a basic C++ grah  implementation.
 
 ## Building Dependecies
 
@@ -9,10 +9,10 @@ This is a basic C++ stack  implementation.
 
 ``clone https://github.com/KhalilSa/CMPS270Assignments.git``
 
-``git checkout hw2ex1_my_stack``
+``git checkout hw2ex1_my_graph``
 
 ``make``
 
 ## run
 navigate to your build folder, then run:
-``./bin/my_stack````
+``./bin/my_graph``
