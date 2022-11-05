@@ -41,6 +41,7 @@ int main()
     getCycle(cycle, s, 0);
     cout << cycle << endl;
 
+    cout << "Check if graph has cycle?" << endl;
     Cycles cycles = graph.hasCycle();
     cycles.printCycle();
 
@@ -54,6 +55,7 @@ int main()
     cout << "Printing Graph 2:" << endl;
     cout << graph2;
 
+    cout << "Check if graph has cycle?" << endl;
     Cycles cycles2 = graph2.hasCycle();
     cycles2.printCycle();
 
@@ -64,11 +66,12 @@ int main()
     start3.emplace_back(2); end3.emplace_back(1);
     start3.emplace_back(2); end3.emplace_back(2);
     Graph graph3(start3, end3);
-    cout << "Printing Graph 2:" << endl;
+    cout << "Printing Graph 3:" << endl;
     cout << graph3;
 
+    cout << "Check if graph has cycle?" << endl;
     Cycles cycles3 = graph3.hasCycle();
-    cycles2.printCycle();
+    cycles3.printCycle();
 }
 
 /*
@@ -82,7 +85,6 @@ Graph::Graph(const vector<int> &start, const vector<int> &end) {
     int endSize = end.size();
     if (startSize != endSize) {
         throw invalid_argument("Start and end vectors must have the same size.");
-        exit(1);
     }
 
     int index = 0;
@@ -94,9 +96,7 @@ Graph::Graph(const vector<int> &start, const vector<int> &end) {
 
     // add nodes with no edges to the vertices map
     for (auto it = end.begin(); it != end.end(); it++) {
-        if (verticesMap.find(*it) == verticesMap.end()) {
-            verticesMap[*it] = vector<int>();
-        };
+        verticesMap.emplace(*it, vector<int>());
     }
 
 }
@@ -109,7 +109,6 @@ int Graph::numOutgoing(const int nodeId) const {
     auto iter = verticesMap.find(nodeId);
     if (iter == verticesMap.end()) {
         throw invalid_argument("Node Id was not found.");
-        exit(1);
     };
     return iter->second.size();
 }
@@ -122,7 +121,6 @@ const vector<int>& Graph::adjacent(const int nodeId) const {
     auto iter = verticesMap.find(nodeId);
     if (iter == verticesMap.end()) {
         throw invalid_argument("Node Id was not found.");
-        exit(1);
     };
     return iter->second;
 }
@@ -165,6 +163,9 @@ Cycles Graph::hasCycle() {
 void Graph::getCyclesDFSTree(vector<vector<int>>& cycles, stack<int>& stack, unordered_map<int, Status>& visited) {
     for (int vertex: adjacent(stack.top())) {
         if (visited[vertex] == IN_STACK) {
+            // trivial cycle don't add
+            if (stack.size() < 2) continue;
+            // add non-trivial cycle
             vector<int> cycle;
             getCycle(cycle, stack, vertex);
             cycles.emplace_back(cycle);
@@ -201,6 +202,7 @@ void getCycle(vector<int>& cycle, stack<int>& stack, int vertex) {
         stack.push(temp.top());
         temp.pop();
     }
+    cycle.emplace_back(vertex);
 }
 
 /*
@@ -213,7 +215,7 @@ void Cycles::printCycle() {
             cout << cycle << endl;
         }
     } else {
-        cout << "The graph is asyclic!" << endl;
+        cout << "The graph doesn't have non-trivial cycle!" << endl;
     }
 }
 

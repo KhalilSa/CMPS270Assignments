@@ -1,4 +1,4 @@
-# Binary Tree
+# Graph
 
 This is a basic C++ graph  implementation.
 
