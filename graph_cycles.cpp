@@ -41,8 +41,34 @@ int main()
     getCycle(cycle, s, 0);
     cout << cycle << endl;
 
-    vector<vector<int>> cycles = graph.hasCycle();
+    Cycles cycles = graph.hasCycle();
+    cycles.printCycle();
 
+    vector<int> start2, end2;
+    start2.emplace_back(0); end2.emplace_back(1);
+    start2.emplace_back(1); end2.emplace_back(2);
+    start2.emplace_back(2); end2.emplace_back(3);
+    start2.emplace_back(3); end2.emplace_back(4);
+    start2.emplace_back(4); end2.emplace_back(1);
+    Graph graph2(start2, end2);
+    cout << "Printing Graph 2:" << endl;
+    cout << graph2;
+
+    Cycles cycles2 = graph2.hasCycle();
+    cycles2.printCycle();
+
+    vector<int> start3, end3;
+    start3.emplace_back(0); end3.emplace_back(0);
+    start3.emplace_back(0); end3.emplace_back(1);
+    start3.emplace_back(0); end3.emplace_back(2);
+    start3.emplace_back(2); end3.emplace_back(1);
+    start3.emplace_back(2); end3.emplace_back(2);
+    Graph graph3(start3, end3);
+    cout << "Printing Graph 2:" << endl;
+    cout << graph3;
+
+    Cycles cycles3 = graph3.hasCycle();
+    cycles2.printCycle();
 }
 
 /*
@@ -108,8 +134,7 @@ const vector<int>& Graph::adjacent(const int nodeId) const {
     returns:
         a list (vector) of all cycles found in the graph
 */
-#define Log(x, y) cout << "Debug: " << x <<  " " << y << endl
-vector<vector<int>> Graph::hasCycle() {
+Cycles Graph::hasCycle() {
     vector<vector<int>> cycles;
     unordered_map<int, Status> visited;
     // mark all vertices as unvisited (unprocessed)
@@ -127,7 +152,10 @@ vector<vector<int>> Graph::hasCycle() {
             getCyclesDFSTree(cycles, stack, visited);
         }
     }
-    return cycles;
+    Cycles c;
+    c.exist = !cycles.empty();
+    c.cycles = cycles;
+    return c;
 }
 
 /*
@@ -136,22 +164,18 @@ vector<vector<int>> Graph::hasCycle() {
 */
 void Graph::getCyclesDFSTree(vector<vector<int>>& cycles, stack<int>& stack, unordered_map<int, Status>& visited) {
     for (int vertex: adjacent(stack.top())) {
-        cout << "Iteration: " << endl;
-        for (auto iter = visited.begin(); iter != visited.end(); ++iter) {
-            Log(iter->first, iter->second);
-        }
         if (visited[vertex] == IN_STACK) {
             vector<int> cycle;
             getCycle(cycle, stack, vertex);
             cycles.emplace_back(cycle);
-        } else {
+        } else if (visited[vertex] == UNPROCESSED) {
             stack.push(vertex);
             visited[vertex] = IN_STACK;
             getCyclesDFSTree(cycles, stack, visited);
         }
-        visited[stack.top()] = DONE;
-        stack.pop();
     }
+    visited[stack.top()] = DONE;
+    stack.pop();
 }
 
 /*
@@ -168,14 +192,28 @@ void getCycle(vector<int>& cycle, stack<int>& stack, int vertex) {
         stack.pop();
     }
     // push the vertex
-    // temp.push(stack.top());
-
+    temp.push(stack.top());
+    stack.pop();
     // fill the cycle
     // while filling back the stack
     while(!temp.empty()) {
         cycle.emplace_back(temp.top());
         stack.push(temp.top());
         temp.pop();
+    }
+}
+
+/*
+    Description:
+     Prints a cycles if it exists
+*/
+void Cycles::printCycle() {
+    if (exist) {
+        for (auto cycle: cycles) {
+            cout << cycle << endl;
+        }
+    } else {
+        cout << "The graph is asyclic!" << endl;
     }
 }
 

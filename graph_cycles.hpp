@@ -7,6 +7,11 @@
 #include <ostream>
 
 enum Status {UNPROCESSED, IN_STACK, DONE};
+struct Cycles {
+    bool exist;
+    std::vector<std::vector<int>> cycles;
+    void printCycle();
+};
 
 class Graph {
     friend std::ostream& operator<<(std::ostream& stream, Graph& graph);
@@ -20,7 +25,7 @@ class Graph {
         Graph(const std::vector<int> &start, const std::vector<int> &end);
         int numOutgoing(const int nodeId) const;
         const std::vector<int>& adjacent(const int nodeId) const;
-        std::vector<std::vector<int>> hasCycle();
+        Cycles hasCycle();
 };
 
 #endif
