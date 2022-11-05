@@ -15,4 +15,4 @@ This is a basic C++ graph  implementation.
 
 ## run
 navigate to your build folder, then run:
-``./bin/my_graph``
+``./bin/graph_cycles``
